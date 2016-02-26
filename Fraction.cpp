@@ -46,13 +46,24 @@ public:
 
 	float add(Fraction fract)
 	{
-		return float((numer / denom)) + float((fract.numer / fract.denom));
+		return float((numer / denom)) + float((fract.getNumNumer() / fract.getNumDenom())); //Type cast to float to keep precision
 	}//End add()
 
 	float subtract(Fraction fract)
 	{
-		return float((numer / denom)) - float((fract.numer / fract.denom));
+		return float((numer / denom)) - float((fract.getNumNumer() / fract.getNumDenom()));
 	}//End subtract
+
+	float multiply(Fraction fract)
+	{
+		return float((numer / denom)) * float((fract.getNumNumer() / fract.getNumDenom()));
+	}//End multiply
+
+	float divide(Fraction fract)
+	{
+		return float((numer / denom)) / float((fract.getNumNumer() / fract.getNumDenom()));
+	}//End multiply
+
 };
 
 int main()
