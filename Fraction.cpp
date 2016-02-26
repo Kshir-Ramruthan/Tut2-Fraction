@@ -23,6 +23,27 @@ public:
 		numer = 0;
 		denom = 1;
 	}
+
+	int getNumDenom()
+	{
+		return denom;
+	}
+
+	int getNumNumer()
+	{
+		return numer;
+	}
+
+	void setNumDenom(int denominator)
+	{
+		denom = denominator;
+	}
+
+	void setNumNumer(int numerator)
+	{
+		numer= numerator;
+	}
+
 };
 
 int main()
