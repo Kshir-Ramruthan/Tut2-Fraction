@@ -18,32 +18,41 @@ public:
 		denom = denominator;
 	}//End constructor
 
-	~Fraction()
+	~Fraction()//Default destructor
 	{
 		numer = 0;
 		denom = 1;
-	}
+	}//End destructor
 
 	int getNumDenom()
 	{
 		return denom;
-	}
+	}//End getNumDenom()
 
 	int getNumNumer()
 	{
 		return numer;
-	}
+	}//End getNumNumer()
 
 	void setNumDenom(int denominator)
 	{
 		denom = denominator;
-	}
+	}//End setNumDenom()
 
 	void setNumNumer(int numerator)
 	{
-		numer= numerator;
-	}
+		numer = numerator;
+	}//End setNumNumer()
 
+	float add(Fraction fract)
+	{
+		return float((numer / denom)) + float((fract.numer / fract.denom));
+	}//End add()
+
+	float subtract(Fraction fract)
+	{
+		return float((numer / denom)) - float((fract.numer / fract.denom));
+	}//End subtract
 };
 
 int main()
