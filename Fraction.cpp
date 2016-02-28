@@ -12,7 +12,7 @@ private:
 	int denom;
 
 public:
-	Fraction(int numerator,int denominator) //Default constructor
+	Fraction(int numerator = 1,int denominator = 1) //Default constructor
 	{
 		numer = numerator;
 		denom = denominator;
@@ -24,49 +24,75 @@ public:
 		denom = 1;
 	}//End destructor
 
-	int getNumDenom()
+	int getNumDenom() //Accessor
 	{
 		return denom;
 	}//End getNumDenom()
 
-	int getNumNumer()
+	int getNumNumer() //Accessor
 	{
 		return numer;
 	}//End getNumNumer()
 
-	void setNumDenom(int denominator)
+	void setNumDenom(int denominator) //Mutator
 	{
 		denom = denominator;
 	}//End setNumDenom()
 
-	void setNumNumer(int numerator)
+	void setNumNumer(int numerator) //Mutator
 	{
 		numer = numerator;
 	}//End setNumNumer()
 
-	float add(Fraction fract)
+	Fraction add(Fraction fract) //Add a fraction to an existing fraction
 	{
-		return float((numer / denom)) + float((fract.getNumNumer() / fract.getNumDenom())); //Type cast to float to keep precision
+		Fraction temp;
+		temp.numer = (numer*fract.denom)+(denom*fract.numer);
+		temp.denom = denom*fract.denom;
+		return temp;
 	}//End add()
 
-	float subtract(Fraction fract)
+	Fraction subtract(Fraction fract) //Subtract a fraction from an existing fraction
 	{
-		return float((numer / denom)) - float((fract.getNumNumer() / fract.getNumDenom()));
+		Fraction temp;
+		temp.numer = (numer*fract.denom) - (denom*fract.numer);
+		temp.denom = denom*fract.denom;
+		return temp;
 	}//End subtract
 
-	float multiply(Fraction fract)
+	Fraction multiply(Fraction fract) //Multiply an existing fraction with another fraction 
 	{
-		return float((numer / denom)) * float((fract.getNumNumer() / fract.getNumDenom()));
+		Fraction temp;
+		temp.numer = numer*fract.numer;
+		temp.denom = denom*fract.denom;
+		return temp;
 	}//End multiply
 
-	float divide(Fraction fract)
+	Fraction divide(Fraction fract) //Divide an existing fraction by another fraction 
 	{
-		return float((numer / denom)) / float((fract.getNumNumer() / fract.getNumDenom()));
+		Fraction temp;
+		temp.numer = numer*fract.denom;
+		temp.denom = denom*fract.numer;
 	}//End multiply
 
+	void print() //Output fraction in standard form
+	{
+		cout << numer / denom << " " << numer - denom*(numer / denom) << "/" << denom << endl;
+	}//End print
 };
+
+Fraction multiply(Fraction fract);
 
 int main()
 {
+	int numer, denom;
+	cin >> numer;
+	cin >> denom;
+	cout << numer / denom << " " << numer - denom*(numer / denom) << "/" << denom << endl;
+
+	Fraction test(7, 6);
+	Fraction test2(6,7);
+	cout << test.multiply(test2).getNumDenom() << endl;
+
 	return 1;
 }
