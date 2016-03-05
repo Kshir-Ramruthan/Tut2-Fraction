@@ -36,7 +36,7 @@ public:
 		numer = numerator;
 	}//End setNumDenom()
 
-	Fraction add(Fraction fract) //Add a fraction to an existing fraction
+	Fraction operator +(Fraction fract) //Add a fraction to an existing fraction
 	{
 		Fraction temp;
 		temp.numer = (numer*fract.denom)+(denom*fract.numer);
@@ -44,7 +44,7 @@ public:
 		return temp;
 	}//End add()
 
-	Fraction subtract(Fraction fract) //Subtract a fraction from an existing fraction
+	Fraction operator -(Fraction fract) //Subtract a fraction from an existing fraction
 	{
 		Fraction temp;
 		temp.numer = (numer*fract.denom) - (denom*fract.numer);
@@ -52,7 +52,7 @@ public:
 		return temp;
 	}//End subtract
 
-	Fraction multiply(Fraction fract) //Multiply an existing fraction with another fraction 
+	Fraction operator *(Fraction fract) //Multiply an existing fraction with another fraction 
 	{
 		Fraction temp;
 		temp.numer = numer*fract.numer;
@@ -60,7 +60,7 @@ public:
 		return temp;
 	}//End multiply
 
-	Fraction divide(Fraction fract) //Divide an existing fraction by another fraction 
+	Fraction operator /(Fraction fract) //Divide an existing fraction by another fraction 
 	{
 		Fraction temp;
 		temp.numer = numer*fract.denom;
@@ -86,20 +86,14 @@ public:
 	}//End print
 };//End class Fraction
 
-Fraction add(Fraction fract);         /*Declare functions to be used*/
-Fraction subtract(Fraction fract);
-Fraction multiply(Fraction fract);
-Fraction divide(Fraction fract);
-void print();
-
 int main()
 {
 	Fraction test1(4,7);    /*Test class Fraction*/
 	Fraction test2(1,2);
-	test1.add(test2).print();
-	test1.subtract(test2).print();
-	test1.multiply(test2).print();
-	test1.divide(test2).print();
+	(test1+test2).print();
+	(test1-test2).print();
+	(test1*test2).print();
+	(test1/test2).print();
 
 	return 1;
 }//End main function
