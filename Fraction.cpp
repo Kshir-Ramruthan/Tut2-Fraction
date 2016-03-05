@@ -24,25 +24,17 @@ public:
 		denom = 1;
 	}//End destructor
 
-	int getNumDenom() //Accessor method
+	void getNumDenom(int *numerator, int *denominator) //Accessor method (Retrieve both the numerator and denominator)
 	{
-		return denom;
+		 *denominator = denom;
+		 *numerator = numer;
 	}//End getNumDenom()
 
-	int getNumNumer() //Accessor method
-	{
-		return numer;
-	}//End getNumNumer()
-
-	void setNumDenom(int denominator) //Mutator method
+	void setNumDenom(int denominator, int numerator) //Mutator method (Change the value of the numerator and denominator)
 	{
 		denom = denominator;
-	}//End setNumDenom()
-
-	void setNumNumer(int numerator) //Mutator method
-	{
 		numer = numerator;
-	}//End setNumNumer()
+	}//End setNumDenom()
 
 	Fraction add(Fraction fract) //Add a fraction to an existing fraction
 	{
@@ -76,9 +68,21 @@ public:
 		return temp;
 	}//End multiply
 
-	void print() //Output fraction in standard form
+	int HCF(int num, int den) //Find the highest common factor of the numerator and denominator
 	{
-		cout << numer / denom << " " << numer - denom*(numer / denom) << "/" << denom << endl;
+		if (den == 0)
+			return num;
+		else
+			return HCF(den,num%den);
+	}//End HCF
+
+	void print() //Output fraction in standard form ie. mixed number
+	{
+		int hcf = HCF(numer - denom*(numer / denom), denom);
+		if (numer>denom)
+			cout << numer / denom << " " << (numer - denom*(numer / denom))/hcf << "/" << denom/hcf << endl;
+		else
+			cout << (numer - denom*(numer / denom))/hcf << "/" << denom/hcf << endl;
 	}//End print
 };//End class Fraction
 
@@ -92,11 +96,10 @@ int main()
 {
 	Fraction test1(4,7);    /*Test class Fraction*/
 	Fraction test2(1,2);
-	cout << "Add half: " << test1.add(test2).getNumNumer() << "/" << test1.add(test2).getNumDenom() << endl;
-	cout << "Subtract half: " << test1.subtract(test2).getNumNumer() << "/" << test1.subtract(test2).getNumDenom() << endl;
-	cout << "Multiply by half: " << test1.multiply(test2).getNumNumer() << "/" << test1.multiply(test2).getNumDenom() << endl;
-	cout << "Divide by half: " << test1.divide(test2).getNumNumer() << "/" << test1.divide(test2).getNumDenom() << endl;
-	test1.print();
+	test1.add(test2).print();
+	test1.subtract(test2).print();
+	test1.multiply(test2).print();
+	test1.divide(test2).print();
 
 	return 1;
 }//End main function
